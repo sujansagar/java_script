@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // Functions without Parameters
+
+    function greet(){
+        console.log('Hello World')
+    }
+    greet()
+
+    // Functions with Parameters
+
+    function addNumber(a,b){
+         r=a+b;
+         console.log('the sum of two numbers is',r)
+    }
+    addNumber(10,20)
+    addNumber(52,19)
+    addNumber(69,69)
+
+    // Functions with Return Statements
+
+    function multiply(x,y){
+        return x*y;
+    }
+    let result1= multiply(10,10);
+    console.log('multiplication of two numbers is',result1)
+
+    let result2= multiply(19,52)
+    console.log('miltiplication of two numbers is',result2)
+
+    //Combining Functions
+
+    function multiply(x,y){
+        return x*y;
+    }
+
+    function calculateRectangleArea(length,widith){
+        return multiply (length,widith);
+    }
+
+    let r1=calculateRectangleArea(20,2)
+    console.log('area of rectangle is',r1)
+
+    let r2=calculateRectangleArea(69,10)
+    console.log('area of rectangle is',r2)
+
+    // Default Parameters
+
+    function greetUser(name='Guest'){
+
+        console.log('Hello'+ ' '+name)
+
+    }greetUser()
+
+
+    
+    
+    
+    
+</script>
+</html>

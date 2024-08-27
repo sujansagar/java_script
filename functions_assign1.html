@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    //1. Write a Javascript program on Fibonacci series.
+    function fibonacci(n) {
+        let fib = [0, 1];
+        for (i = 2; i <= n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib;
+    }
+    console.log(' Fibonacci series is :', fibonacci(20))
+
+
+    // 2. Write a JavaScript program to convert a temperature from Celsius to Fahrenheit.
+
+    function tofahrenhit(celsius) {
+        let result = celsius * 1.8 + 32;
+        return result;
+    }
+
+    let result1 = 52
+    let result2 = 100
+    console.log('temperature from celsius to fahrenheit is', tofahrenhit(result1))
+    console.log('temperature from celsius to fahrenheit is', tofahrenhit(result2))
+
+    // 3.Write a javascript program to find square root of number.
+
+    function findsquare(a) {
+        let squareRoot = Math.sqrt(a);
+        return squareRoot;
+    }
+    let a1 = 52
+    let a2 = 19
+    console.log('square root of a', a1, 'is', findsquare(a1))
+    console.log('sruare root of a', a2, 'is', findsquare(a2))
+
+
+    // 4.Write a JavaScript program to generate a random integer between two given numbers.
+
+    function findrandom(num) {
+        let random = (Math.random() * num + 1)
+        return random;
+    }
+    let num = 100
+    console.log('random number is', findrandom(num))
+
+    // 5. Write a javascript program to check if the passed string is palindrome or not.
+
+    function palindrome(str) {
+        let j = str.length - 1
+        for (i = 0; i < str.length / 2; i++) {
+            if (str[i] != str[j]) {
+                return 'not a palindrome';
+            }
+            j--;
+        }
+        return 'is palindrome';
+    }
+    let name1 = "innomatics";
+    let name2 = "otto";
+    console.log(' given name1 is ', palindrome(name1))
+    console.log(' given name2 is ', palindrome(name2))
+
+    console.log('given name is', palindrome('madam'))
+
+
+
+
+</script>
+
+</html>

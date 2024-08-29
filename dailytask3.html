@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Arrow Function
+
+    // 1.Write an arrow function named multiplyByTwo that takes one parameter num and returns the value of num multiplied by 2.
+
+    const multiplyByTwo = (num) => {
+        return num * 2
+    }
+    console.log(multiplyByTwo(5))
+    console.log(`multipication a num with 2 is ${multiplyByTwo(20)}`)
+
+    // 2.Write an arrow function named isEven that takes one parameter number and returns true if the number is even, otherwise returns false.
+
+    const isEven = (number) => {
+        if (number % 2 == 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    console.log(isEven(20))
+    console.log(`given number is ${isEven(25)}`)
+
+    // global and local variables
+    //global
+
+    var global = "this is a global variable"
+    function scope() {
+        console.log(global);
+    }
+    scope()
+
+    // Global and Local space
+
+    /* 1.Create a global variable named globalVar and assign it a value of 10.
+       2.Write a function named scopeTest that creates a local variable named localVar with a value of 20.
+       3.Inside scopeTest, try to print both globalVar and localVar to the console.
+       4.Outside the function, try to print localVar and observe what happens. Reflect on the behavior and explain the concept of global and local scope.
+  */
+
+    var globalVar = 10;
+    function scopeTest() {
+        var localVar = 20;
+
+        console.log('printing inside scoprTest function', globalVar)
+        console.log('printing inside scoprTest function', localVar)
+    }
+    scopeTest()
+    console.log('printing outside scoprTest function', globalVar) //we can access global variable value in the entire script.
+    // console.log('printing outside scoprTest function',localVar) // we can access local variable only inside the function
+
+    // Closures
+
+    /* 1. Write a function named outerFunction that has a variable outerVar with a value of 5.
+       2. Inside outerFunction, define an inner function named innerFunction that returns the value of outerVar.
+       3. Return the innerFunction from outerFunction and store the result in a variable named closure.
+       4. Call closure and print the result to understand how closures work.*/
+
+   function outerFunction() {
+        var outerVar = 5
+        function innerFunction() {
+            return outerVar
+        }
+        return innerFunction;
+    }
+    const clouser = outerFunction();
+    console.log(clouser())
+
+    // Pure Functions
+
+    // 1. Write a function named sum that takes two parameters, a and b, and returns their sum. Ensure that the function does not modify any external variables.
+    // 2.  Write a function named multiply that takes two parameters, x and y, and returns their product. Ensure this function is also pure.
+    // 3.  Explain why these functions are considered pure functions.
+
+    /*The functions sum and multiply are pure because they always return the same output for the same inputs and do not modify any external state.
+    They rely solely on their input parameters and do not cause any side effects like altering global variables or performing I/O operations.
+    This makes them predictable, consistent, and easy to test. Pure functions are a key concept in functional programming, ensuring reliability and reusability.*/
+
+    function sum(a, b) {
+        return a + b;
+    }
+    sum()
+    function multiply(x, y) {
+        return x * y;
+    }
+    multiply()
+
+
+    // Call Stack
+
+    // 1. Create three functions: functionA, functionB, and functionC.
+    // 2. Inside functionA, call functionB. Inside functionB, call functionC. Inside functionC, print a message like "In functionC".
+    // 3. Call functionA to see the order of execution. Reflect on how the call stack handles function execution and trace the flow of these calls
+
+    function functionA() {
+        return functionB()
+
+    }
+    function functionB() {
+        return functionA()
+
+    }
+    function functionC() {
+        return 'In functionC'
+
+    }
+    functionA()
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

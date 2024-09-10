@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Array to store calculation history
+let calculationHistory = [];
+
+// Function to perform operations
+function performOperation(operation, num1, num2) {
+    let result;
+    switch (operation) {
+        case 'add':
+            result = num1 + num2;
+            break;
+        case 'subtract':
+            result = num1 - num2;
+            break;
+        case 'multiply':
+            result = num1 * num2;
+            break;
+        case 'divide':
+            result = num2 !== 0 ? num1 / num2 : "Error (Division by zero)";
+            break;
+        case 'power':
+            result = Math.pow(num1, num2);
+            break;
+        case 'sqrt':
+            result = Math.sqrt(num1);
+            break;
+        case 'percentage':
+            result = (num1 / 100) * num2;
+            break;
+        default:
+            result = "Invalid operation";
+    }
+    return result;
+}
+
+// Function to get user input
+function getUserInput() {
+    let operation = prompt("Enter the operation (add, subtract, multiply, divide, power, sqrt, percentage):").toLowerCase();
+    let num1 = parseFloat(prompt("Enter number 1:"));
+    let num2 = 0;
+
+    if (operation !== "sqrt") {
+        num2 = parseFloat(prompt("Enter number 2:"));
+    }
+
+    // Validate the operation and numbers
+    if (isNaN(num1) || (operation !== 'sqrt' && isNaN(num2))) {
+        alert("Invalid number input.");
+        return;
+    }
+
+    let result = performOperation(operation, num1, num2);
+    
+    // Ensure the operation and result are always stored in history
+    let output = `${num1} ${getOperatorSymbol(operation)} ${operation === "sqrt" ? "" : num2} = ${result}`;
+    calculationHistory.push(output);
+
+    alert(output);
+}
+
+// Function to get the operator symbol
+function getOperatorSymbol(operation) {
+    switch (operation) {
+        case 'add': return '+';
+        case 'subtract': return '-';
+        case 'multiply': return '*';
+        case 'divide': return '/';
+        case 'power': return '^';
+        case 'sqrt': return '√';
+        case 'percentage': return '%';
+        default: return '?';
+    }
+}
+
+// Function to display calculation history
+function displayHistory() {
+    if (calculationHistory.length === 0) {
+        alert("No calculations performed yet.");
+    } else {
+        alert("Calculation History:\n" + calculationHistory.join('\n'));
+    }
+}
+
+// Function to clear the calculation history
+function clearHistory() {
+    calculationHistory = [];
+    alert("Calculation history cleared.");
+}
+
+// Main function to perform the calculator operation in a loop
+function calculator() {
+    let keepGoing = true;
+    while (keepGoing) {
+        getUserInput();
+        let continueCalc = prompt("Do you want to perform another calculation? (yes/no)").toLowerCase();
+        keepGoing = continueCalc === "yes";
+
+        if (keepGoing) {
+            let viewHistory = prompt("Do you want to view the calculation history? (yes/no)").toLowerCase();
+            if (viewHistory === "yes") {
+                displayHistory();
+            }
+
+            let clearHist = prompt("Do you want to clear the calculation history? (yes/no)").toLowerCase();
+            if (clearHist === "yes") {
+                clearHistory();
+            }
+        }
+    }
+    alert("Thank you for using the calculator!");
+}
+
+// Start the calculator
+calculator();
+
+</script>
+</html>

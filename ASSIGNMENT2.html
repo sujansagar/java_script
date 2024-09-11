@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+
+    // 1.Write a Javascript program that removes the duplicate elements from an array.
+    let arr = [1, 2, 2, 3, 3, 4, 89, 52];
+    let duplicate = arr.filter((item, index) => arr.indexOf(item) === index);
+    console.log(duplicate);
+
+    // 2.Write a JavaScript program to create a new string without the first and last characters of a given string. 
+    let str = "Gajula Sujan Sagar";
+    let remove = str.slice(1, -1);
+    console.log(remove);
+
+    // 3.Write a function that takes an array of strings as input and prints each element to the console using the forEach method
+    function ArrayOfStrings(arr) {
+        arr.forEach(ele => {
+            console.log(ele);
+        });
+    }
+    const StrArr = ["sagar", "sujan"];
+    ArrayOfStrings(StrArr);
+
+    // 4.Write a function that takes an array of numbers as input and returns true if any of the numbers are negative, otherwise false, using the some method.
+    function Neg(arr) {
+        return arr.some(number => number < 0);
+    }
+    const num = [20,30,-52,80];
+    const result = Neg(num);
+    console.log(result);
+
+    // 5.Write a function that takes an array of numbers as input, filters out the even numbers, and then returns the sum of the remaining numbers using a combination of filter and reduce methods.
+    function sumOddNumbers(arr) {
+        return arr.filter(num => num % 2 !== 0).reduce((acc, current) => acc + current, 0);
+    }
+    const number = [1,5,8,9];
+    console.log(sumOddNumbers(number));
+
+
+
+</script>
+
+</html>

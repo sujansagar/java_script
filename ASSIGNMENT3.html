@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        body{
+            background-color: lightseagreen;
+        }
+        /* BMI Calculator */
+        .container2 {
+            border: 1px solid pink;
+            width: 400px;
+            background-color: pink;
+            border-radius: 20px;
+            text-align: center;
+            /* margin-left: 1000px; */
+        }
+
+        #bmibtn {
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #weight,
+        #height {
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        /* Light/Dark theme styles for container4 */
+        .container4 {
+            width: 400px;
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid red;
+            height: 250px;
+            background-color: white;
+            color: black;
+            margin-top: 100px;
+            /* margin-left: 1000px; */
+        }
+
+        .btn {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 100px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: lightgray;
+        }
+
+        .btn:hover {
+            background-color: #4f92da;
+        }
+
+        /* Dark theme specifically for container4 */
+        .dark-theme {
+            background-color: rgb(32, 32, 32);
+            color: yellow;
+            font-size: 20px;
+        }
+
+        .dark-theme .btn {
+            background-color: #f0ad4e;
+        }
+
+        .dark-theme .btn:hover {
+            background-color: #ec971f;
+        }
+
+        /* FAQ */
+
+        .container{
+            margin-top: 100px;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            padding: 10px;
+            background-color: skyblue;
+            border: 1px solid skyblue;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            width: 500px;
+            
+        }
+
+        .faq-answer {
+            display: none; /* Hidden by default */
+            padding: 10px;
+            border: 1px solid lightpink;
+            border-radius: 5px;
+            background-color: lightpink;
+            width: 500px;
+        }
+
+        .faq-question.active {
+            background-color: lightyellow;
+        }
+
+        /* rating */
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .star {
+            font-size: 40px;
+            color: lightgray;
+            cursor: pointer;
+        }
+
+        .star:hover, 
+        .star.selected {
+            color: black;
+        }
+
+        .rating-output {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- BMI Calculator -->
+    <div class="container2">
+        <h3 class="h3">BMI Calculator</h3>
+        <label for="weight">Weight(kgs)</label>
+        <input type="number" id="weight" placeholder="Enter Your Weight">
+        <br><br>
+        <label for="height">Height(m)</label>
+        <input type="number" id="height" placeholder="Enter Your Height">
+        <br><br>
+        <button id="bmibtn">Check your BMI</button>
+        <br>
+        <p id="bmip">Your result is :</p>
+    </div>
+
+    
+     <!-- Toggle light and dark theme  -->
+    <div class="container4" id="themeContainer">
+        <h2 class="h2">BATMAN</h2>
+        <button id="toggle" class="btn">Click to Dark Theme</button>
+    </div>
+   
+
+    <!-- FAQ page -->
+     
+    
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">What is JavaScript?</div>
+            <div class="faq-answer">
+                JavaScript is a versatile programming language used to make web pages interactive and dynamic. It runs in the browser on the client side.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How does Bootstrap work?</div>
+            <div class="faq-answer">
+                Bootstrap is a powerful front-end framework that helps developers create responsive, mobile-first websites using ready-made CSS components.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What is HTML?</div>
+            <div class="faq-answer">
+                HTML (Hypertext Markup Language) is the standard language for creating web pages and web applications.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What are web development frameworks?</div>
+            <div class="faq-answer">
+                Web development frameworks provide developers with pre-built code and structures to help them build web applications quickly. Examples include React, Angular, and Vue.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Rating -->
+
+    <div class="stars" id="starContainer">
+        <span class="star" data-value="1">&#10084;</span>
+        <span class="star" data-value="2">&#10084;</span>
+        <span class="star" data-value="3">&#10084;</span>
+        <span class="star" data-value="4">&#10084;</span>
+        <span class="star" data-value="5">&#10084;</span>
+    </div>
+
+    <div class="rating-output" id="ratingOutput">Rating: 0</div>
+
+
+
+
+    
+
+</body>
+<script>
+    // BMI calculator
+    document.getElementById('bmibtn').addEventListener('click', () => {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+
+        if (weight > 0 && height > 0) {
+            const bmi = (weight / (height * height));
+            let category = '';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                category = 'Normal Weight';
+            } else if (bmi >= 25 && bmi < 29.9) {
+                category = 'Overweight';
+            } else {
+                category = 'Obesity';
+            }
+
+            document.getElementById('bmip').textContent = `Your BMI is: ${bmi.toFixed(2)} (${category})`;
+        } else {
+            document.getElementById('bmip').textContent = 'Please enter valid values';
+           
+        }
+         document.getElementById('bmip').style.color='blue'
+    });
+
+    
+    document.getElementById('toggle').addEventListener('click', function () {
+            const container4 = document.getElementById('themeContainer');
+            container4.classList.toggle('dark-theme');
+            if (container4.classList.contains('dark-theme')) {
+                this.textContent = 'Switch to Light Theme';
+            } else {
+                this.textContent = 'Switch to Dark Theme';
+            }
+        });
+   
+    // FAQ
+   
+    
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            // Close all other answers
+            faqQuestions.forEach(q => {
+                if (q !== this) {
+                    q.classList.remove('active'); // Remove active class
+                    q.nextElementSibling.style.display = 'none'; // Hide other answers
+                }
+            });
+
+        
+            this.classList.toggle('active');
+
+        
+            const answer = this.nextElementSibling;
+
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        });
+    });
+
+    // rating
+
+    const stars = document.querySelectorAll('.star');
+        const ratingOutput = document.getElementById('ratingOutput');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            
+            star.addEventListener('mouseover', function() {
+                highlightStars(this.getAttribute('data-value'));
+            });
+
+            
+            star.addEventListener('mouseout', function() {
+                highlightStars(selectedRating); 
+            });
+
+            
+            star.addEventListener('click', function() {
+                const clickedRating = this.getAttribute('data-value');
+
+                
+                if (clickedRating == selectedRating) {
+                    selectedRating = 0;
+                    resetStars();
+                    ratingOutput.textContent = `Rating: ${selectedRating}`;
+                } else {
+                    selectedRating = clickedRating;
+                    ratingOutput.textContent = `Rating: ${selectedRating}`;
+                }
+                highlightStars(selectedRating);
+            });
+        });
+
+        
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        
+        function resetStars() {
+            stars.forEach(star => {
+                star.classList.remove('selected');
+            });
+        }
+
+
+    
+
+</script>
+
+</html>

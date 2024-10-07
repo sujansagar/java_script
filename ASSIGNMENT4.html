@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* Create a program on digital clock */
+
+    .main1 {
+        width: 600px;
+        height: 350px;
+        border: 1px solid rgb(18, 31, 43);
+        background-color: rgb(18, 31, 43);
+        border-radius: 10px;
+    }
+
+    .container1 {
+        color: antiquewhite;
+        margin-top: 125px;
+    }
+
+    .clock {
+        display: flex;
+        justify-content: center;
+        color: red;
+        font-size: 50px;
+        background: rgba(235, 0, 255, 0.11);
+        border-radius: 20px;
+        margin: 50px 50px;
+    }
+
+    .clock span {
+        display: inline-block;
+        padding: 10px 10px;
+    }
+
+    .clock span::after {
+        font-size: 10px;
+        position: relative;
+        color: orange;
+
+    }
+
+    #hrs::after {
+        content: 'HOURS';
+        top: 15px;
+        right: 40px;
+
+    }
+
+    #min::after {
+        content: 'MINUTES';
+        top: 15px;
+        right: 48px;
+    }
+
+    #sec::after {
+        content: 'SECONDS';
+        top: 15px;
+        right: 48px;
+    }
+
+    /* 2. Create a program which display today’s date in javscript. */
+
+    .main2 {
+        width: 500px;
+        height: 250px;
+        margin: 20px;
+        text-align: center;
+        background: linear-gradient(to right, #ff8fab, #ffc2d1);
+        border-radius: 10px;
+    }
+
+    #btn {
+        padding: 10px;
+        border-radius: 10px;
+        position: relative;
+        top: 80px;
+        cursor: pointer;
+    }
+
+    p {
+        position: relative;
+        top: 50px;
+        font-size: 20px;
+    }
+
+    /* 3. Create a program on auto slide show  */
+
+    .main3 {
+        width: 950px;
+        height: 550px;
+
+        margin: 50px;
+
+    }
+
+    .images img {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* 3. create an auto slide */
+
+    .main3 {
+        width: 60%;
+        overflow: hidden;
+        position: relative;
+        height: 80vh;
+
+    }
+
+    .container3 {
+        position: relative;
+        height: 100%;
+    }
+
+
+    .container3 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .container3 img.active {
+        opacity: 1;
+    }
+
+    /* Create a program on Typewriter animation */
+
+    .container {
+        border: 1px solid red;
+        width: 100vh;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #010708;
+        overflow: hidden;
+    }
+
+    .container .text {
+        position: relative;
+        color: #4070F4;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .container .first-text {
+        color: white;
+    }
+
+    .container .sec-text::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #010708;
+        border-left: 2px solid #4070F4;
+        animation: animate 4s steps(12) infinite;
+    }
+
+    .sec-text {
+        margin-left: 10px;
+    }
+
+    @keyframes animate {
+
+        40%,
+        60% {
+            left: 100%;
+        }
+
+        100% {
+            left: 0%;
+        }
+    }
+</style>
+
+<body>
+    <!-- 1. Create a program on digital clock -->
+
+    <div class="main1">
+
+        <div class="container1">
+            <div class="clock">
+                <span id="hrs">00</span>
+                <span>:</span>
+                <span id="min">00</span>
+                <span>:</span>
+                <span id="sec">00</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--2.  Create a program which display today’s date in javscript. -->
+
+    <div class="main2">
+        <div class="container2">
+            <p>Today’s date is :<span id="span2"></span></p>
+            <button onclick="clickme()" id="btn">Show Date</button>
+        </div>
+    </div>
+
+    <!--3.  Create a program on auto slide show  -->
+
+    <div class="main3">
+        <div class="container3">
+            <img src="https://i.pinimg.com/564x/ff/ed/f3/ffedf37abe6e4f365129e0e7f6c68aab.jpg">
+            <img src="https://i.pinimg.com/564x/84/e9/d5/84e9d5a83d850db38a978742b361e591.jpg">
+            <img src="https://i.pinimg.com/564x/e1/ba/a8/e1baa878a90533b0a08fa65f3ea9e26c.jpg">
+            <img src="https://i.pinimg.com/564x/b4/78/82/b478828809474ad16f860b9deb4e52c8.jpg">
+            <img src="https://i.pinimg.com/564x/68/8f/ab/688faba9312d001d7d3f4ed9766be18d.jpg">
+            <img src="https://i.pinimg.com/564x/ab/46/ab/ab46abda590282bea5900e73da5cb37c.jpg">
+        </div>
+    </div>
+
+    <!-- Create a program on Typewriter animation -->
+
+    <div class="container">
+        <span class="text first-text">Welcome To</span>
+        <span class="text sec-text">SEB's</span>
+    </div>
+
+
+
+</body>
+<script>
+    // 1. Create a program on digital clock
+
+    setInterval(() => {
+        let currentTime = new Date()
+
+        document.getElementById('hrs').innerHTML = currentTime.getHours()
+        document.getElementById('min').innerHTML = currentTime.getMinutes()
+        document.getElementById('sec').innerHTML = currentTime.getSeconds()
+    }, 1000)
+
+    //2. Create a program which display today’s date in javscript.
+
+    function clickme() {
+        let today = new Date()
+
+        let date = today.getDate()
+        let month = today.getMonth() + 1
+        let year = today.getFullYear()
+
+        document.getElementById('span2').innerHTML = `  ${date} / ${month} / ${year}`
+
+        document.getElementById('span2').style.fontSize = '30px'
+        document.getElementById('span2').style.color = 'blue'
+    }
+
+    //3. create an auto slide
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.container3 img');
+    const totalImages = images.length;
+
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % totalImages;
+        images[currentIndex].classList.add('active');
+    }
+    setInterval(showNextImage, 2000);
+
+    // Create a program on Typewriter animation
+
+    const text = document.querySelector('.sec-text')
+
+
+    const textLoad = () => {
+
+        setTimeout(() => {
+            text.textContent = 'FIGHT CLUB'
+        }, 4000)
+    }
+
+    textLoad()
+    setInterval(textLoad, 12000)
+
+
+
+</script>
+
+</html>
